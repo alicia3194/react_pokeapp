@@ -23,7 +23,9 @@ const ListPokemon = ({ pokemonList }) => {
         <Card
           key={pokemon.id}
           pokemonData={pokemon}
-          onCardClick={() => handleCardClick(pokemon.id)}
+          onCardClick={() => {
+            handleCardClick(pokemon.id);
+          }}
         />
       ))}
       {showCharacteristics && (

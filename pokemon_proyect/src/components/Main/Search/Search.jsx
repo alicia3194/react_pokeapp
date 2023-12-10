@@ -2,29 +2,38 @@ import React, { useState } from "react";
 import { TextField, Button, Container} from "@mui/material";
 
 const Search = ({ onSearch }) => {
-  const [textInput, setTextInput] = useState("");
   const [error, setError] = useState("");
+  const [searchedPokemon, setSearchedPokemon] = useState([]);
+  const [textInput, setTextInput] = useState("");
 
   const searchPokemon = async () => {
     try {
-      if (!textInput) {
-        setError("Pokemon not found");
+      if (!textInput || textInput.length <= 3) {
+        setError("Invalid Pokémon name");
         return;
       }
-  
-      const responseApi = await fetch(`https://pokeapi.co/api/v2/pokemon/${textInput.toLowerCase()}`);
+
+      const lowercaseName = textInput.toLowerCase();
+
+      if (searchedPokemon.includes(lowercaseName)) {
+        setError("That Pokemon has already been searched!");
+        return;
+      }
+
+      const responseApi = await fetch(`https://pokeapi.co/api/v2/pokemon/${lowercaseName}`);
       const data = await responseApi.json();
-  
+
       onSearch(data);
-      setError(""); 
+      setError("");
+      setSearchedPokemon([...searchedPokemon, lowercaseName]);
+
     } catch (error) {
-      console.log({message:error});
+      setError("Pokémon not found");
     }
   };
 
-  const handleInputChange = (e) => {
-    setTextInput(e.target.value);
-    setError(""); 
+  const handleButtonClick = () => {
+    searchPokemon();
   };
 
   return (
@@ -32,19 +41,17 @@ const Search = ({ onSearch }) => {
       <TextField
         fullWidth
         variant="outlined"
-        label="Search for your Pokémon"
         placeholder="Search for your Pokémon"
         value={textInput}
-        onChange={handleInputChange}
-        error={Boolean(error)}
+        onChange={(e) => setTextInput(e.target.value)}
         helperText={error}
         sx={{ mb: 2 }}
       />
       <Button
         variant="contained"
         color="error"
-        onClick={searchPokemon}
-        sx={{ borderRadius: '50%', width: '50px', height: '50px', fontSize: '1.2rem', fontWeight: 'bold', color: 'white' }}
+        onClick={handleButtonClick}
+        sx={{ borderRadius: '50%',border: '1.2px solid black', width: '52px', height: '70px', fontSize: '20px', fontWeight: 'bold', color: 'white' }}
       > Send
       </Button>
     </Container>
@@ -52,4 +59,3 @@ const Search = ({ onSearch }) => {
 };
 
 export default Search;
-

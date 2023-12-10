@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0c0c0c7d;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  max-width: 200px; 
+  width: 100%; 
+
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  text-align: center;
+}

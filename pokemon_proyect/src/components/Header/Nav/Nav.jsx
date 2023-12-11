@@ -10,7 +10,7 @@ const Nav = () => {
       <AppBar position="static" sx={{ backgroundColor: 'red' }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Inicio
+            Home
           </Typography>
           <Button color="inherit">New Pokemon</Button>
         </Toolbar>

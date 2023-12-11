@@ -14,12 +14,12 @@ const Main = () => {
   return (
     <Container component="main" maxWidth="lg">
       <CssBaseline />
-      <Paper sx={{ mt: 4, p: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <img src={Logo} alt="Pokemon Cover" style={{ width: '100%', height: 'auto' }} />
-        <Typography variant="h4" component="div" gutterBottom>
-        Gotta catch'em all!!
-        </Typography>
-      </Paper>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px' }}>
+      <img src={Logo} alt="Pokemon Cover" style={{ width: '320px', height: '200px' }} />
+    <Typography variant="h4" component="div" gutterBottom>
+      Gotta catch'em all!!
+    </Typography>
+     </div>
       <Search onSearch={handleSearch} />
       <ListPokemon pokemonList={pokemonList} />
     </Container>

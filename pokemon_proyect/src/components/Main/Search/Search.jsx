@@ -51,7 +51,7 @@ const Search = ({ onSearch }) => {
         variant="contained"
         color="error"
         onClick={handleButtonClick}
-        sx={{ borderRadius: '50%',border: '1.2px solid black', width: '52px', height: '70px', fontSize: '20px', fontWeight: 'bold', color: 'white' }}
+        sx={{ borderRadius: '50%',border: '1.2px solid black', width: '52px', height: '70px', fontSize: '16px', fontWeight: 'bold', color: 'white',background:"red" }}
       > Send
       </Button>
     </Container>
